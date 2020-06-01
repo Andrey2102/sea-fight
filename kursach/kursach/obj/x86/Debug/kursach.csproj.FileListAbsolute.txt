@@ -1,0 +1,5 @@
+/home/andrey/Projects/kursach/kursach/bin/Debug/kursach.exe
+/home/andrey/Projects/kursach/kursach/bin/Debug/kursach.pdb
+/home/andrey/Projects/kursach/kursach/obj/x86/Debug/kursach.csproj.CoreCompileInputs.cache
+/home/andrey/Projects/kursach/kursach/obj/x86/Debug/kursach.exe
+/home/andrey/Projects/kursach/kursach/obj/x86/Debug/kursach.pdb
