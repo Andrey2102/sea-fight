@@ -130,9 +130,23 @@ namespace kursach
             }
         }
 
-        public bool isAval(int x, int y)
+        private bool isAval(int x, int y)
         {
             if(x >= 0 && x < 10 && y >= 0 && y < 10 && GArea[x, y] == 0){
+                return true;
+            }
+            else{
+                if(x == 10 || x == -1 || y == 10 || y == -1){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool isAval(int x, int y, int param)
+        {
+            if (x >= 0 && x < 10 && y >= 0 && y < 10 && GArea[x, y] == 0)
+            {
                 return true;
             }
             return false;
@@ -144,7 +158,7 @@ namespace kursach
                && isAval(x - 1, y)
                && isAval(x - 1, y + 1)
                && isAval(x, y - 1)
-               && isAval(x, y)
+               && isAval(x, y, 1)
                && isAval(x, y + 1)
                && isAval(x + 1, y - 1)
                && isAval(x + 1, y)
