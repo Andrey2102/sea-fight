@@ -1,7 +1,13 @@
 ﻿<Properties StartupConfiguration="{7AE23AD3-4FBD-4C1A-B15F-A7C7E3E0CE42}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kursach/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kursach/ConsoleOutput.cs">
     <Files>
-      <File FileName="kursach/Program.cs" Line="338" Column="1" />
+      <File FileName="kursach/Program.cs" Line="9" Column="9" />
+      <File FileName="kursach/Game.cs" Line="6" Column="9" />
+      <File FileName="kursach/Area.cs" Line="22" Column="29" />
+      <File FileName="kursach/Player.cs" Line="6" Column="9" />
+      <File FileName="kursach/Dot.cs" Line="11" Column="10" />
+      <File FileName="kursach/ConsoleOutput.cs" Line="4" Column="7" />
+      <File FileName="kursach/ConsoleInput.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
