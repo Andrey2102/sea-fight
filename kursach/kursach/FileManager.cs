@@ -6,6 +6,22 @@ namespace kursach
 {
     class FileManager
     {
+        private static FileManager _instance;
+
+
+        public static FileManager GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new FileManager();
+            }
+            return _instance;
+        }
+
+        private FileManager(){
+            
+        }
+
         public void Pack(Record r)
         {
             List<Record> records = Unpack();

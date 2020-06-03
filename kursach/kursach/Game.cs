@@ -94,13 +94,13 @@ namespace kursach
 
             if(UWinFlag == true){
                 CO.Win();
-                FileManager fm = new FileManager();
+                FileManager fm = FileManager.GetInstance();
                 Record r = new Record(Gamer.points, UWinFlag);
                 fm.Pack(r);
             }
             else{
                 CO.lose();
-                FileManager fm = new FileManager();
+                FileManager fm = FileManager.GetInstance();
                 Record r = new Record(Gamer.points, UWinFlag);
                 fm.Pack(r);
             }

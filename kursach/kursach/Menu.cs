@@ -24,8 +24,7 @@ namespace kursach
                         g.start();
                         break;
                     case 2:
-                        FileManager FM = new FileManager();
-
+                        FileManager FM = FileManager.GetInstance();
                         CO.PrintRecords(FM.Unpack());
                         break;
                     case 3:
