@@ -15,11 +15,165 @@ namespace kursach
             if (GArea[d.x, d.y] == 1)
             {
                 GArea[d.x, d.y] = 2;
+                if(sunken(d)){
+                    Around(new Dot(-5, -5), d);
+                }
                 return true;
             }
             else{
                 CO.attacked();
                 return true;
+            }
+        }
+
+
+        private bool inRange(Dot d){
+            if (d.x >= 0 && d.x < 10 && d.y >= 0 && d.y < 10)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void Around(Dot from, Dot d){
+            if(inRange(new Dot(d.x + 1, d.y + 1))){
+                if (GArea[d.x + 1, d.y + 1] == 0)
+                {
+
+                    GArea[d.x + 1, d.y + 1] = 3;
+                }
+            }
+            if (inRange(new Dot(d.x + 1, d.y - 1)))
+            {
+                if (GArea[d.x + 1, d.y - 1] == 0)
+                {
+
+                    GArea[d.x + 1, d.y - 1] = 3;
+                }
+            }
+            if (inRange(new Dot(d.x - 1, d.y + 1)))
+            {
+                if (GArea[d.x - 1, d.y + 1] == 0)
+                {
+
+                    GArea[d.x - 1, d.y + 1] = 3;
+                }
+            }
+            if (inRange(new Dot(d.x - 1, d.y - 1)))
+            {
+                if (GArea[d.x - 1, d.y - 1] == 0)
+                {
+
+                    GArea[d.x - 1, d.y - 1] = 3;
+                }
+            }
+            if (inRange(new Dot(d.x + 1, d.y)))
+            {
+                if (GArea[d.x + 1, d.y] == 0)
+                {
+                    GArea[d.x + 1, d.y] = 3;
+                }
+                if(GArea[d.x + 1, d.y] == 2 && d.x + 1 != from.x && d.y != from.y){
+                    Around(d, new Dot(d.x + 1, d.y));
+                }
+            }
+
+            if (inRange(new Dot(d.x - 1, d.y)))
+            {
+                if (GArea[d.x - 1, d.y] == 0)
+                {
+                    GArea[d.x - 1, d.y] = 3;
+                }
+                if (GArea[d.x - 1, d.y] == 2 && d.x - 1 != from.x && d.y != from.y)
+                {
+                    Around(d, new Dot(d.x - 1, d.y));
+                }
+            }
+
+            if (inRange(new Dot(d.x, d.y + 1)))
+            {
+                if (GArea[d.x, d.y + 1] == 0)
+                {
+                    GArea[d.x, d.y + 1] = 3;
+                }
+                if (GArea[d.x, d.y + 1] == 2 && d.x != from.x && d.y + 1 != from.y)
+                {
+                    Around(d, new Dot(d.x, d.y + 1));
+                }
+            }
+            if (inRange(new Dot(d.x, d.y - 1)))
+            {
+                if (GArea[d.x, d.y - 1] == 0)
+                {
+                    GArea[d.x, d.y - 1] = 3;
+                }
+                if (GArea[d.x, d.y - 1] == 2 && d.x != from.x && d.y - 1 != from.y)
+                {
+                    Around(d, new Dot(d.x, d.y - 1));
+                }
+            }
+        }
+
+
+        private bool sunken(Dot d){
+            if(sunkAval(d, new Dot(d.x + 1, d.y))
+               && sunkAval(d, new Dot(d.x - 1, d.y))
+               && sunkAval(d, new Dot(d.x, d.y + 1))
+               && sunkAval(d, new Dot(d.x, d.y - 1))){
+                return true;
+            }
+            return false;
+        }
+
+
+        private bool sunkAval(Dot from, Dot d)
+        {
+            if (d.x == 10 || d.x == -1 || d.y == 10 || d.y == -1)
+            {
+                return true;
+            }
+            else
+            {
+                if (GArea[d.x, d.y] == 0 || GArea[d.x, d.y] == 3)
+                {
+                    return true;
+                }
+                else
+                {
+                    if (GArea[d.x, d.y] == 1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        if (GArea[d.x, d.y] == 2)
+                        {
+                            if (d.x + 1 == from.x)
+                            {
+                                return (sunkAval(d, new Dot(d.x - 1, d.y))
+                                        && sunkAval(d, new Dot(d.x, d.y + 1))
+                                        && sunkAval(d, new Dot(d.x, d.y - 1)));
+                            }
+                            if(d.x - 1 == from.x){
+                                return (sunkAval(d, new Dot(d.x + 1, d.y))
+                                        && sunkAval(d, new Dot(d.x, d.y + 1))
+                                        && sunkAval(d, new Dot(d.x, d.y - 1)));
+                            }
+                            if(d.y - 1 == from.y){
+                                return (sunkAval(d, new Dot(d.x - 1, d.y))
+                                        && sunkAval(d, new Dot(d.x, d.y + 1))
+                                        && sunkAval(d, new Dot(d.x + 1, d.y)));
+                            }
+                            else{
+                                return (sunkAval(d, new Dot(d.x - 1, d.y))
+                                        && sunkAval(d, new Dot(d.x + 1, d.y))
+                                        && sunkAval(d, new Dot(d.x, d.y - 1)));
+                            }
+
+                        }
+                        return true;
+                    }
+                }
             }
         }
 

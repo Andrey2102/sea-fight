@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{7AE23AD3-4FBD-4C1A-B15F-A7C7E3E0CE42}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="kursach/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="kursach/Player.cs">
     <Files>
       <File FileName="kursach/Program.cs" Line="9" Column="33" />
       <File FileName="kursach/Game.cs" Line="92" Column="21" />
