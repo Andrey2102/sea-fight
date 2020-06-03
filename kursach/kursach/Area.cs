@@ -3,7 +3,26 @@ namespace kursach
 {
     class Area
     {
+        private ConsoleOutput CO = new ConsoleOutput();
+
         public int [,] GArea = new int [10,10];
+
+        public bool Hit(Dot d){
+            if(GArea[d.x, d.y] == 0){
+                GArea[d.x, d.y] = 3;
+                return false;
+            }
+            if (GArea[d.x, d.y] == 1)
+            {
+                GArea[d.x, d.y] = 2;
+                return true;
+            }
+            else{
+                CO.attacked();
+                return true;
+            }
+        }
+
         public void ranking(){
             ranking4();
             ranking3();

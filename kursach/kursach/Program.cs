@@ -6,10 +6,7 @@ namespace kursach
     {
         public static void Main(string[] args)
         {
-            ConsoleOutput CO = new ConsoleOutput();
-            Area PlayerArea = new Area();
-            PlayerArea.ranking();
-            CO.PrintUserArea2(PlayerArea);
+            Game g = new Game();
         }
     }
 }

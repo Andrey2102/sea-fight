@@ -40,6 +40,7 @@
     <Compile Include="Dot.cs" />
     <Compile Include="ConsoleOutput.cs" />
     <Compile Include="ConsoleInput.cs" />
+    <Compile Include="Bot.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
