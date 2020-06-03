@@ -7,10 +7,10 @@ namespace kursach
 
         public int [,] GArea = new int [10,10];
 
-        public bool Hit(Dot d){
+        public int Hit(Dot d){
             if(GArea[d.x, d.y] == 0){
                 GArea[d.x, d.y] = 3;
-                return false;
+                return 0;
             }
             if (GArea[d.x, d.y] == 1)
             {
@@ -18,11 +18,10 @@ namespace kursach
                 if(sunken(d)){
                     Around(new Dot(-5, -5), d);
                 }
-                return true;
+                return 1;
             }
             else{
-                CO.attacked();
-                return true;
+                return 2;
             }
         }
 
@@ -41,6 +40,7 @@ namespace kursach
                 {
 
                     GArea[d.x + 1, d.y + 1] = 3;
+                    CO.PrintBotArea(this);
                 }
             }
             if (inRange(new Dot(d.x + 1, d.y - 1)))
@@ -49,6 +49,8 @@ namespace kursach
                 {
 
                     GArea[d.x + 1, d.y - 1] = 3;
+                    CO.PrintBotArea(this);
+                
                 }
             }
             if (inRange(new Dot(d.x - 1, d.y + 1)))
@@ -57,6 +59,7 @@ namespace kursach
                 {
 
                     GArea[d.x - 1, d.y + 1] = 3;
+                    CO.PrintBotArea(this);
                 }
             }
             if (inRange(new Dot(d.x - 1, d.y - 1)))
@@ -65,6 +68,7 @@ namespace kursach
                 {
 
                     GArea[d.x - 1, d.y - 1] = 3;
+                    CO.PrintBotArea(this);
                 }
             }
             if (inRange(new Dot(d.x + 1, d.y)))
@@ -72,6 +76,7 @@ namespace kursach
                 if (GArea[d.x + 1, d.y] == 0)
                 {
                     GArea[d.x + 1, d.y] = 3;
+                    CO.PrintBotArea(this);
                 }
                 if(GArea[d.x + 1, d.y] == 2 && d.x + 1 != from.x && d.y != from.y){
                     Around(d, new Dot(d.x + 1, d.y));
@@ -83,6 +88,7 @@ namespace kursach
                 if (GArea[d.x - 1, d.y] == 0)
                 {
                     GArea[d.x - 1, d.y] = 3;
+                    CO.PrintBotArea(this);
                 }
                 if (GArea[d.x - 1, d.y] == 2 && d.x - 1 != from.x && d.y != from.y)
                 {
@@ -95,6 +101,7 @@ namespace kursach
                 if (GArea[d.x, d.y + 1] == 0)
                 {
                     GArea[d.x, d.y + 1] = 3;
+                    CO.PrintBotArea(this);
                 }
                 if (GArea[d.x, d.y + 1] == 2 && d.x != from.x && d.y + 1 != from.y)
                 {
@@ -106,6 +113,7 @@ namespace kursach
                 if (GArea[d.x, d.y - 1] == 0)
                 {
                     GArea[d.x, d.y - 1] = 3;
+                    CO.PrintBotArea(this);
                 }
                 if (GArea[d.x, d.y - 1] == 2 && d.x != from.x && d.y - 1 != from.y)
                 {

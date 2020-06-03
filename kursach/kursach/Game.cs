@@ -37,59 +37,73 @@ namespace kursach
             }
         }
 
-        private void initial(){
+        public void initial(){
             BotArea.ranking();
             PlayerArea.ranking();
             reranking();
         }
 
-        private void start(){
+        public void start(){
             bool UWinFlag = false;
             bool UserStep = true;
+            int tmp;
             while(true){
                 CO.Clear();
                 CO.PrintUserArea(PlayerArea);
                 CO.PrintBotArea(BotArea);    
+
                 if(UserStep){
-                    if(!BotArea.Hit(Gamer.strike())){
-                        UserStep = false;
+                    tmp = BotArea.Hit(Gamer.strike());
+                    switch(tmp){
+                        case 0:
+                            UserStep = false;
+                            Gamer.steps++;
+                            break;
+                        case 1:
+                            Gamer.points++;
+                            break;
+                        default:
+                            CO.attacked();
+                            break;
                     }
-                    else{
-                        Gamer.points++;
                         if (Gamer.Win())
                         {
                             UWinFlag = true;
                             break;
                         }
                     }
-                }
                 else{
-                    if (!PlayerArea.Hit(Comp.strike()))
+                    tmp = PlayerArea.Hit(Comp.strike());
+                    switch (tmp)
                     {
-                        UserStep = true;
-                    }
-                    else
-                    {
-                        Comp.points++;
-                        if (Comp.Win())
-                        {
+                        case 0:
+                            UserStep = true;
                             break;
-                        }
+                        case 1:
+                            Comp.points++;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (Comp.Win())
+                    {
+                        break;
                     }
                 }
             }
+
             if(UWinFlag == true){
                 CO.Win();
+                FileManager fm = new FileManager();
+                Record r = new Record(Gamer.points, UWinFlag);
+                fm.Pack(r);
             }
             else{
                 CO.lose();
+                FileManager fm = new FileManager();
+                Record r = new Record(Gamer.points, UWinFlag);
+                fm.Pack(r);
             }
-        }
-
-        public Game()
-        {
-            initial();
-            start();
         }
     }
 }

@@ -6,8 +6,10 @@ namespace kursach
         ConsoleOutput CO = new ConsoleOutput();
         ConsoleInput CI = new ConsoleInput();
         public int points;
+        public int steps;
         public Player(){
             points = 0;
+            steps = 0;
         }
 
         public bool Win(){
@@ -27,7 +29,8 @@ namespace kursach
             else
             {
                 CO.ver();
-            }string tmp = CI.input();
+            }
+            string tmp = CI.input();
             int res;
             bool isInt = Int32.TryParse(tmp, out res);
             if(isInt && res >= 0 && res < 10){

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace kursach
 {
     class ConsoleOutput
@@ -116,6 +117,39 @@ namespace kursach
         {
             Clear();
             Console.WriteLine("You win.");
+        }
+
+        public void menu()
+        {
+            Console.WriteLine("\t\t\tGAME MENU");
+            Console.WriteLine("1) Start game.");
+            Console.WriteLine("2) Record Table.");
+            Console.WriteLine("3) EXIT.");
+        }
+
+        public void MenuSel(){
+            Console.Write("Select: ");
+        }
+
+        public void Name(){
+            Console.Write("Name: ");
+        }
+
+        public string win(bool win){
+            if(win){
+                return "Win";
+            }
+            else{
+                return "Lose";
+            }
+            
+        }
+
+        public void PrintRecords(List<Record> ls){
+            Console.WriteLine("\t\tRecords table");
+            for (int i = 0; i < ls.Count; i++){
+                Console.WriteLine("Name: " + ls[i].Name + "\t\t\t|Steps:" + ls[i].steps + "\t\t|Status:" + win(ls[i].Win) + "\t|");
+            }
         }
     }
 }
